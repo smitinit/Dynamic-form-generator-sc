@@ -66,4 +66,4 @@ Implement proper error and exception handling
 }
 ```
 
-![preview sample image](image.png)
+![preview sample image](./public/image.png)
