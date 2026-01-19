@@ -15,6 +15,7 @@ interface FormState {
   };
 }
 
+// initial data with dummy data
 const initialState: FormState = {
   value: {
     fields: [
@@ -51,20 +52,29 @@ export const formDataSlice = createSlice({
   initialState,
 
   reducers: {
+    // simply push the new field object to the array
     updateFormData: (state, action: PayloadAction<FormFieldsState>) => {
       state.value.fields.push(action.payload);
     },
+
+    // reset the array to []
     resetFormData: (state) => {
       state.value.fields = [];
     },
+
+    // toggle by id
     toggleRequire: (state, action: PayloadAction<string>) => {
+      // find the element from the array
       const field = state.value.fields.find(
         (field) => field.id === action.payload,
       );
       if (field) {
+        // if on then off , off then on
         field.required = !field.required;
       }
     },
+
+    // delete by id
     deleteField: (state, action: PayloadAction<string>) => {
       state.value.fields = state.value.fields.filter(
         (field) => field.id !== action.payload,
@@ -73,5 +83,6 @@ export const formDataSlice = createSlice({
   },
 });
 
+// export the functions
 export const { updateFormData, resetFormData, toggleRequire, deleteField } =
   formDataSlice.actions;

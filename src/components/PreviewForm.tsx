@@ -13,9 +13,11 @@ import { deleteField, toggleRequire } from "@/store/formdataSlice";
 import { Link } from "react-router-dom";
 
 export const PreviewForm = () => {
+  // get the data and the action function from the store
   const dispatch = useAppDispatch();
   const formFieldData = useAppSelector((state) => state.value.fields);
 
+  // fallback
   if (!formFieldData.length) {
     return (
       <div className="text-sm text-muted-foreground text-center py-8">

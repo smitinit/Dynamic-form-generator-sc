@@ -9,6 +9,7 @@ import { Textarea } from "./ui/textarea";
 import { NativeSelect, NativeSelectOption } from "./ui/native-select";
 
 export const RenderField = ({ formField }: { formField: FormFieldsState }) => {
+  // destructure data
   const { type, label, id, options, required } = formField;
 
   switch (type) {
@@ -19,6 +20,7 @@ export const RenderField = ({ formField }: { formField: FormFieldsState }) => {
             <Label htmlFor={id}>{label}</Label>
             {required && <span className=" text-red-600 ">*</span>}
           </div>
+
           <Input id={id} name={id} required={required} />
         </div>
       );
@@ -30,6 +32,7 @@ export const RenderField = ({ formField }: { formField: FormFieldsState }) => {
             <Label htmlFor={id}>{label}</Label>
             {required && <span className=" text-red-600 ">*</span>}
           </div>
+
           <Textarea className="w-full" id={id} name={id} required={required} />
         </div>
       );
@@ -41,6 +44,7 @@ export const RenderField = ({ formField }: { formField: FormFieldsState }) => {
             <Label>{label}</Label>
             {required && <span className=" text-red-600 ">*</span>}
           </div>
+
           <NativeSelect id={id} name={id} required={required}>
             <NativeSelectOption value="">Select {label}</NativeSelectOption>
             {options?.map((option) => (
@@ -71,6 +75,7 @@ export const RenderField = ({ formField }: { formField: FormFieldsState }) => {
             <Label htmlFor={id}>{label}</Label>
             {required && <span className=" text-red-600 ">*</span>}
           </div>
+
           <RadioGroup name={id} id={id} required={required}>
             {options?.map((option) => (
               <div key={option} className="flex items-center gap-2">

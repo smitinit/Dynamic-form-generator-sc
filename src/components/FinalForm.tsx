@@ -1,6 +1,6 @@
-import { toast } from "sonner";
 import { RenderField } from "./RenderField";
 
+import { toast } from "sonner";
 import { Button } from "./ui/button";
 
 import { useAppSelector } from "@/hooks/redux";
@@ -8,8 +8,10 @@ import { useAppSelector } from "@/hooks/redux";
 import { Link } from "react-router-dom";
 
 export const FinalForm = () => {
+  // get the form data
   const formFieldData = useAppSelector((state) => state.value.fields);
 
+  // check for fallback
   if (!formFieldData.length) {
     return (
       <div className="flex gap-2 flex-row">
@@ -24,9 +26,11 @@ export const FinalForm = () => {
   function handleOnSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
+    // get data from input form
     const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData.entries());
 
+    // display the data
     toast.info(
       <pre className="text-xs">
         Form Submitted with: <br />

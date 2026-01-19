@@ -9,9 +9,11 @@ export function OptionsAdder({
 }: {
   setOptions: React.Dispatch<React.SetStateAction<string[]>>;
 }) {
+  // ref to collect the input data
   const inputRef = useRef<HTMLInputElement>(null);
 
   function handleAddOptions() {
+    // get the value
     const value = inputRef.current?.value;
 
     if (value) {

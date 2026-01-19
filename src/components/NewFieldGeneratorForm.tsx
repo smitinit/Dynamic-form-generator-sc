@@ -20,29 +20,37 @@ import { OptionsAdder } from "./OptionsAdder";
 import { toast } from "sonner";
 
 export const NewFieldForm = () => {
+  // local ui state
   const [inputType, setInputType] = useState<
     "input" | "select" | "textarea" | "radio" | "checkbox" | ""
   >("");
 
   const [options, setOptions] = useState<string[]>([]);
 
+  // ref to clear the input
   const inputRef = useRef<HTMLInputElement>(null);
 
+  // get both dispatch and formFieldData from store
   const dispatch = useAppDispatch();
   const formFieldData = useAppSelector((state) => state.value.fields);
 
+  // submit function
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
+    // get data from form
     const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData.entries());
 
+    // update to new data to add id
     const newData = {
       type: data["input-type"] as string,
       label: data.label as string,
       id: data.label.toString().toLowerCase().trim().split(" ").join(""),
       options,
     };
+
+    // validation for label, already exist in the form
     if (
       !formFieldData
         .flatMap((field) => field.label.toLocaleLowerCase())
@@ -54,10 +62,11 @@ export const NewFieldForm = () => {
         "The Provided Label already exists in the form. Try with a different name!",
       );
     }
+    // reset the form
     handleFormReset();
-    console.log(newData);
   }
 
+  // reset helper
   function handleFormReset() {
     setInputType("");
     setOptions([]);
@@ -66,8 +75,10 @@ export const NewFieldForm = () => {
     }
   }
 
+  // this variable helps to show options when user select radio and select
   const shouldHaveOptions = ["radio", "select"].includes(inputType);
 
+  // delete option function using index
   function handleDeleteOption(i: number) {
     setOptions((prev) => prev.filter((_, idx) => idx !== i));
   }

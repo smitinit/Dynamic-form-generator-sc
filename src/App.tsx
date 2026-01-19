@@ -13,10 +13,12 @@ export default function App() {
         <Route
           path="*"
           element={
-            <div>
-              404 - Page Not Found
-              <br />
-              <Link to={"/"}>Go back to home page</Link>
+            <div className="flex h-screen justify-center items-center text-destructive flex-col gap-5">
+              <span>404 - Page Not Found</span>
+
+              <Link to={"/"} className="text-primary">
+                Go back to home page
+              </Link>
             </div>
           }
         />
