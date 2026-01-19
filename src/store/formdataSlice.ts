@@ -1,8 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
+interface FormFieldsState {
+  type: string;
+  label: string;
+  name: string;
+  required?: boolean;
+  options?: string[];
+}
+
 interface FormState {
-  value: Record<string, unknown>;
+  value: { fields: FormFieldsState[] | null };
 }
 
 const initialState: FormState = {
@@ -19,7 +27,7 @@ export const formDataSlice = createSlice({
       state.value = { ...state.value, ...action.payload };
     },
     resetFormData: (state) => {
-      state.value = {};
+      state.value = initialState.value;
     },
   },
 });
