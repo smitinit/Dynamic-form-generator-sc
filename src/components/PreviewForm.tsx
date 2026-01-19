@@ -60,7 +60,7 @@ export const PreviewForm = () => {
       ))}
       <div className="flex justify-end">
         <Button asChild className="w-fit">
-          <Link to="/submission">Submission Page</Link>
+          <Link to="/submission">Go to Submission Page</Link>
         </Button>
       </div>
     </div>

@@ -4,14 +4,9 @@ import { Checkbox } from "./ui/checkbox";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { RadioGroup, RadioGroupItem } from "./ui/radio-group";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "./ui/select";
+
 import { Textarea } from "./ui/textarea";
+import { NativeSelect, NativeSelectOption } from "./ui/native-select";
 
 export const RenderField = ({ formField }: { formField: FormFieldsState }) => {
   const { type, label, id, options, required } = formField;
@@ -24,7 +19,7 @@ export const RenderField = ({ formField }: { formField: FormFieldsState }) => {
             <Label htmlFor={id}>{label}</Label>
             {required && <span className=" text-red-600 ">*</span>}
           </div>
-          <Input id={id} name={id} />
+          <Input id={id} name={id} required={required} />
         </div>
       );
 
@@ -35,7 +30,7 @@ export const RenderField = ({ formField }: { formField: FormFieldsState }) => {
             <Label htmlFor={id}>{label}</Label>
             {required && <span className=" text-red-600 ">*</span>}
           </div>
-          <Textarea className="w-full" id={id} name={id} />
+          <Textarea className="w-full" id={id} name={id} required={required} />
         </div>
       );
 
@@ -46,25 +41,22 @@ export const RenderField = ({ formField }: { formField: FormFieldsState }) => {
             <Label>{label}</Label>
             {required && <span className=" text-red-600 ">*</span>}
           </div>
-          <Select>
-            <SelectTrigger>
-              <SelectValue placeholder={`Select ${label}`} />
-            </SelectTrigger>
-            <SelectContent>
-              {options?.map((option) => (
-                <SelectItem key={option} value={option}>
-                  {option}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
+          <NativeSelect id={id} name={id} required={required}>
+            <NativeSelectOption value="">Select {label}</NativeSelectOption>
+            {options?.map((option) => (
+              <NativeSelectOption key={option} value={option}>
+                {option}
+              </NativeSelectOption>
+            ))}
+          </NativeSelect>
         </div>
       );
 
     case "checkbox":
       return (
         <div className="flex items-center gap-2">
-          <Checkbox id={id} />
+          <Checkbox id={id} name={id} value="true" required={required} />
+
           <div className="flex gap-2">
             <Label htmlFor={id}>{label}</Label>
             {required && <span className=" text-red-600 ">*</span>}
@@ -76,10 +68,10 @@ export const RenderField = ({ formField }: { formField: FormFieldsState }) => {
       return (
         <div className="flex flex-col gap-2">
           <div className="flex gap-2">
-            <Label>{label}</Label>
+            <Label htmlFor={id}>{label}</Label>
             {required && <span className=" text-red-600 ">*</span>}
           </div>
-          <RadioGroup>
+          <RadioGroup name={id} id={id} required={required}>
             {options?.map((option) => (
               <div key={option} className="flex items-center gap-2">
                 <RadioGroupItem value={option} id={`${id}-${option}`} />

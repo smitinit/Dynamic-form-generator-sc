@@ -21,7 +21,7 @@ export default function App() {
           }
         />
       </Routes>
-      <Toaster />
+      <Toaster position="top-center" richColors theme="light" />
     </BrowserRouter>
   );
 }
