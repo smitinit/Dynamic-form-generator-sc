@@ -27,7 +27,7 @@ export const PreviewForm = () => {
   }
 
   return (
-    <div className="flex flex-col gap-4 flex-1 max-w-3xl">
+    <div className="flex flex-col gap-4 flex-1 max-w-3xl p-6">
       <div className="flex flex-col gap-1">
         <h2 className="text-lg font-semibold">Preview Form</h2>
         <p className="text-sm text-muted-foreground">

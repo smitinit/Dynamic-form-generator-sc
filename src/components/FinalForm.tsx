@@ -41,7 +41,7 @@ export const FinalForm = () => {
   return (
     <form
       onSubmit={(e) => handleOnSubmit(e)}
-      className="flex flex-col gap-4 flex-1 max-w-3xl"
+      className="flex flex-col gap-4 flex-1 max-w-3xl p-6"
     >
       <div className="flex flex-col gap-1">
         <h2 className="text-lg font-semibold">Final Form!</h2>
