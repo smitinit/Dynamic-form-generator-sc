@@ -3,6 +3,7 @@ import { useRef } from "react";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { Button } from "./ui/button";
+import { toast } from "sonner";
 
 export function OptionsAdder({
   setOptions,
@@ -17,9 +18,23 @@ export function OptionsAdder({
     const value = inputRef.current?.value;
 
     if (value) {
-      setOptions((prevOptions) => [...prevOptions, value]);
+      setOptions((prevOptions) => {
+        if (
+          prevOptions.some(
+            (v) => v.trim().toLowerCase() === value.trim().toLowerCase(),
+          )
+        ) {
+          toast.error(
+            "The value already exists in the option, try with a different one!",
+          );
+          return prevOptions;
+        }
+        return [...prevOptions, value];
+      });
+
       if (inputRef.current) {
         inputRef.current.value = "";
+        inputRef.current.focus();
       }
     }
   }

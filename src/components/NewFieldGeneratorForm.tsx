@@ -132,7 +132,7 @@ export const NewFieldForm = () => {
 
         {/* render options fields according to input type */}
         {shouldHaveOptions && (
-          <div className="rounded-lg border bg-muted/30 p-4 flex flex-col gap-3">
+          <div className="rounded-lg border  p-4 flex flex-col gap-3">
             <OptionsAdder setOptions={setOptions} />
           </div>
         )}
@@ -146,7 +146,7 @@ export const NewFieldForm = () => {
               >
                 <span>{option}</span>
                 <Trash
-                  className="h-4 w-4 cursor-pointer text-muted-foreground hover:text-destructive"
+                  className="h-4 w-4 cursor-pointer text-destructive/60 hover:text-destructive"
                   onClick={() => handleDeleteOption(i)}
                 />
               </div>
