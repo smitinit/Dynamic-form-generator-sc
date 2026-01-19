@@ -73,10 +73,10 @@ export const NewFieldForm = () => {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4">
+    <div className="flex items-center justify-center px-4">
       <form
         onSubmit={handleSubmit}
-        className="w-full max-w-md rounded-xl  bg-background p-6  flex flex-col gap-6"
+        className="w-full max-w-md rounded-xl bg-background p-6 flex flex-col gap-6"
       >
         <div className="flex flex-col gap-1">
           <h2 className="text-lg font-semibold">Add New Field</h2>

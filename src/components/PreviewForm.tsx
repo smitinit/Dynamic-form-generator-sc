@@ -1,11 +1,15 @@
-import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 import { RenderField } from "./RenderField";
-import { Trash } from "lucide-react";
-import { deleteField, toggleRequire } from "@/store/formdataSlice";
+
 import { Checkbox } from "./ui/checkbox";
 import { Label } from "./ui/label";
 import { Separator } from "./ui/separator";
 import { Button } from "./ui/button";
+
+import { Trash } from "lucide-react";
+
+import { useAppDispatch, useAppSelector } from "@/hooks/redux";
+import { deleteField, toggleRequire } from "@/store/formdataSlice";
+
 import { Link } from "react-router-dom";
 
 export const PreviewForm = () => {
@@ -21,7 +25,7 @@ export const PreviewForm = () => {
   }
 
   return (
-    <div className="flex flex-col gap-4 flex-1 max-w-3xl ">
+    <div className="flex flex-col gap-4 flex-1 max-w-3xl">
       <div className="flex flex-col gap-1">
         <h2 className="text-lg font-semibold">Preview Form</h2>
         <p className="text-sm text-muted-foreground">
