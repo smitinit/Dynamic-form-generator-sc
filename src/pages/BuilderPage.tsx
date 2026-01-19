@@ -1,11 +1,13 @@
-import { NewFieldForm } from "@/components/NewFieldForm";
-import { RenderFormFields } from "@/components/RenderFormFields";
+import { NewFieldForm } from "@/components/NewFieldGeneratorForm";
+import { PreviewForm } from "@/components/PreviewForm";
+import { Separator } from "@/components/ui/separator";
 
 export const BuilderPage = () => {
   return (
-    <main className="flex justify-between w-full items-center">
+    <main className="flex justify-around w-full items-center h-screen">
       <NewFieldForm />
-      <RenderFormFields />
+      <Separator orientation="vertical" />
+      <PreviewForm />
     </main>
   );
 };

@@ -2,6 +2,7 @@ import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 
 import BuilderPage from "./pages/BuilderPage";
 import SubmissionPage from "./pages/SubmissionPage";
+import { Toaster } from "./components/ui/sonner";
 
 export default function App() {
   return (
@@ -20,6 +21,7 @@ export default function App() {
           }
         />
       </Routes>
+      <Toaster />
     </BrowserRouter>
   );
 }
