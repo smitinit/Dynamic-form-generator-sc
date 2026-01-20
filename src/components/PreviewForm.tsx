@@ -68,6 +68,7 @@ export const PreviewForm = () => {
       <div className="flex justify-end gap-2">
         <Button
           type="button"
+          variant={"destructive"}
           onClick={() => dispatch(deleteAllFields())}
           className="w-fit"
         >
@@ -75,6 +76,7 @@ export const PreviewForm = () => {
         </Button>
         <Button
           type="button"
+          variant={"secondary"}
           onClick={() => dispatch(resetFormData())}
           className="w-fit"
         >
