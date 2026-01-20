@@ -9,9 +9,15 @@ export interface FormFieldsState {
   options?: string[];
 }
 
+interface FormDetails {
+  title: string;
+  description: string;
+}
+
 interface FormState {
   value: {
     fields: FormFieldsState[];
+    formDetails: FormDetails;
   };
 }
 
@@ -43,6 +49,10 @@ const initialState: FormState = {
         options: ["USA", "Canada", "UK", "Other"],
       },
     ],
+    formDetails: {
+      title: "Sample Form",
+      description: "This is a sample form description.",
+    },
   },
 };
 
@@ -59,7 +69,7 @@ export const formDataSlice = createSlice({
 
     // reset the array to []
     resetFormData: (state) => {
-      state.value.fields = [];
+      state.value = initialState.value;
     },
 
     // toggle by id
@@ -80,9 +90,25 @@ export const formDataSlice = createSlice({
         (field) => field.id !== action.payload,
       );
     },
+
+    // delete all fields
+    deleteAllFields(state) {
+      state.value.fields = [];
+    },
+
+    // state for form details -> title and description
+    updateFormDetails: (state, action: PayloadAction<FormDetails>) => {
+      state.value.formDetails = { ...action.payload };
+    },
   },
 });
 
 // export the functions
-export const { updateFormData, resetFormData, toggleRequire, deleteField } =
-  formDataSlice.actions;
+export const {
+  updateFormData,
+  resetFormData,
+  toggleRequire,
+  deleteAllFields,
+  deleteField,
+  updateFormDetails,
+} = formDataSlice.actions;

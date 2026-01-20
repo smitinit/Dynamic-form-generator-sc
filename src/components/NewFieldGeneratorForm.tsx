@@ -53,8 +53,8 @@ export const NewFieldForm = () => {
     // validation for label, already exist in the form
     if (
       !formFieldData
-        .flatMap((field) => field.label.toLocaleLowerCase())
-        .includes(newData.label.toLocaleLowerCase())
+        .flatMap((field) => field.label.toLowerCase())
+        .some((fieldName) => fieldName === newData.label.toLowerCase())
     ) {
       dispatch(updateFormData(newData));
     } else {
@@ -155,7 +155,11 @@ export const NewFieldForm = () => {
         )}
 
         <div className="pt-2">
-          <Button type="submit" className="w-full" disabled={!inputType}>
+          <Button
+            type="submit"
+            className="w-full"
+            disabled={!inputType || (shouldHaveOptions && !options.length)}
+          >
             Create Field
           </Button>
         </div>

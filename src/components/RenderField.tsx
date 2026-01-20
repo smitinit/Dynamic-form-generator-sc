@@ -21,7 +21,7 @@ export const RenderField = ({ formField }: { formField: FormFieldsState }) => {
             {required && <span className=" text-red-600 ">*</span>}
           </div>
 
-          <Input id={id} name={id} required={required} />
+          <Input id={id} name={id} required={required} className="max-w-md" />
         </div>
       );
 
@@ -33,7 +33,12 @@ export const RenderField = ({ formField }: { formField: FormFieldsState }) => {
             {required && <span className=" text-red-600 ">*</span>}
           </div>
 
-          <Textarea className="w-full" id={id} name={id} required={required} />
+          <Textarea
+            className="min-w-md"
+            id={id}
+            name={id}
+            required={required}
+          />
         </div>
       );
 

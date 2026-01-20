@@ -10,15 +10,17 @@ import { Link } from "react-router-dom";
 export const FinalForm = () => {
   // get the form data
   const formFieldData = useAppSelector((state) => state.value.fields);
-
+  const formDetails = useAppSelector((state) => state.value.formDetails);
   // check for fallback
   if (!formFieldData.length) {
     return (
-      <div className="flex gap-2 flex-row">
+      <div className="flex gap-2 flex-col items-center ">
         <p className="text-sm text-muted-foreground text-center py-8">
-          No Forms yet. Start building your form.
+          No Forms created yet. Start building your form.
         </p>
-        <Link to={"/"}>Create your form.</Link>
+        <Button asChild>
+          <Link to={"/"}>Create your form</Link>
+        </Button>
       </div>
     );
   }
@@ -44,9 +46,9 @@ export const FinalForm = () => {
       className="flex flex-col gap-4 flex-1 max-w-3xl p-6"
     >
       <div className="flex flex-col gap-1">
-        <h2 className="text-lg font-semibold">Final Form!</h2>
+        <h2 className="text-lg font-semibold">{formDetails?.title}</h2>
         <p className="text-sm text-muted-foreground">
-          Review and submit your form below.
+          {formDetails?.description}
         </p>
       </div>
       {formFieldData.map((field) => (
