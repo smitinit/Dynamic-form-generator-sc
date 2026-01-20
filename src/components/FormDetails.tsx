@@ -36,7 +36,7 @@ export const FormDetails = () => {
     formDetails?.title !== title || formDetails?.description !== description;
 
   return (
-    <div className="flex flex-col gap-2 rounded-lg bg-accent text-white p-5">
+    <div className="flex flex-col gap-2 rounded-lg bg-accent p-5">
       <div className="flex flex-col gap-1">
         <Label className="text-sm font-medium">Form Header</Label>
         <Input
@@ -44,7 +44,7 @@ export const FormDetails = () => {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           placeholder="Enter form title"
-          className="max-w-md"
+          className="max-w-md text-white"
         />
       </div>
 
@@ -54,7 +54,7 @@ export const FormDetails = () => {
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           placeholder="Short description"
-          className="max-w-md"
+          className="max-w-md text-white"
         />
       </div>
 
